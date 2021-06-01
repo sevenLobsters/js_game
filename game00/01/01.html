@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+        <title> H5文件</title>
+        <script type="text/javascript">
+        function pageLoaded(){
+            var canvas = document.getElementById('mycanvas');
+            var canvasContext = canvas.getContext('2d');
+            canvasContext.fillRect(100,100,100,50);
+            canvasContext.fillRect(250,100,100,50);
+            // canvasContext.fillStyle="white"
+            canvasContext.fillRect(125,110,50,30);
+            canvasContext.fillRect(275,110,50,30);
+
+
+            canvasContext.strokeRect(110,10,50,50);
+            canvasContext.strokeRect(180,10,50,50);
+
+            canvasContext.clearRect(50,50,70,70)
+            canvasContext.clearRect(160,5,30,25)
+            // 170 直角三角形
+            canvasContext.beginPath();
+            canvasContext.moveTo(10,170);
+            canvasContext.lineTo(10,200);
+            canvasContext.lineTo(30,200);
+            canvasContext.closePath();
+            canvasContext.stroke();
+            //等边三角形
+            canvasContext.beginPath();
+            canvasContext.moveTo(60,170);
+            canvasContext.lineTo(60,220);
+            canvasContext.lineTo(103,195);
+            canvasContext.closePath();
+            canvasContext.stroke();
+
+            //多边形
+            canvasContext.beginPath();
+            canvasContext.moveTo(120,170);
+            canvasContext.lineTo(120,190);
+            canvasContext.lineTo(160,190);
+            canvasContext.lineTo(160,230);
+            canvasContext.closePath();
+            canvasContext.stroke();
+
+            //arc方法
+            canvasContext.beginPath();
+            canvasContext.arc(100,300,40,0,Math.PI,true);
+            canvasContext.fill();
+
+            canvasContext.beginPath();
+            canvasContext.arc(200,300,25,0,3/2*Math.PI,true);
+            canvasContext.stroke();
+
+            canvasContext.fillText("this is text...",330,40);
+            canvasContext.font = "12pt Arial";
+            canvasContext.fillText("this is in 12pt Arial text...",330,60);
+            canvasContext.font = "16pt Arial";
+            canvasContext.fillText("this is in 16pt Arial text...",330,90);
+            
+            //切换颜色
+            canvasContext.fillStyle='red';
+            canvasContext.fillRect(10,310,50,50)
+
+            canvasContext.fillStyle='green';
+            canvasContext.fillRect(80,310,50,50)
+
+            canvasContext.fillStyle='rgb(255,255,0)';
+            canvasContext.fillRect(150,310,50,50)
+
+            canvasContext.fillStyle='rgb(0,255,0,0.6)';
+            canvasContext.fillRect(110,330,50,50)
+
+            //操作image标签
+            var fireImage = document.getElementById("fire");
+            var pattern = canvasContext.createPattern(fireImage,"repeat");
+            canvasContext.fillStyle=pattern;
+            canvasContext.fillRect(420,240,130,50);
+
+            var image = document.getElementById("spaceship");
+            canvasContext.drawImage(image,0,400);
+            canvasContext.drawImage(image,0,450,100,25);
+            canvasContext.drawImage(image,0,0,60,50,250,400,60,50);
+
+            //translate
+            canvasContext.translate(250,370);
+            canvasContext.fillRect(0,0,30,30);
+            canvasContext.rotate(Math.PI/3);
+            canvasContext.drawImage(image,0,0,60,50,-30,-25,60,50);
+
+            canvasContext.rotate(-Math.PI/3);
+            canvasContext.translate(-240,-370);
+
+            canvasContext.translate(300,370);
+            canvasContext.rotate(3*Math.PI/4);
+            canvasContext.drawImage(image,0,0,60,50,-30,-25,60,60);
+            canvasContext.rotate(-3*Math.PI/4);
+            canvasContext.translate(-300,-370);
+         
+        }
+        
+        </script>
+
+        <script>
+            var audio = document.creatElement('audio');
+            var mp3Support,oggSupport;
+            if(audio.canPlayType){
+                mp3Support=""!==audio.canPlayType("audio/mpeg");
+                oggSupport=""!=audio.canPlayType("audio/ogg; codecs=\"vorbis\"");
+            } else{
+                mp3Support = false;
+                oggSupport = false;
+            }
+            var soundFileExtn = oggSupport?".ogg":mp3Support?".mp3":undefined;
+            if(soundFileExtn){
+                var sound = new Audio();
+                sound.src = "music"+soundFileExtn;
+                sound.play();
+            }
+        </script>
+        <script>
+            if(soundFileExtn){
+                var sound = new Audio();
+                sound.addEventListener("canplaythrough",function(){
+                    sound.play();
+                });
+                sound.src = "music"+soundFileExtn;
+            }
+        </script>
+    </head>
+    <body onload="pageLoaded();">
+        <canvas width="640" height="480" id="mycanvas" style="border: 1px solid black;">
+            你的浏览器不支持h5 canvas，请更换浏览器。
+        </canvas>
+        <br>
+        <img src="spaceship.png" id="spaceship">
+        <br>
+        <img src="fire.png" id="fire">
+        <br>
+        <audio src="music.mp3" controls="controls">
+            你的浏览器不支持Html5 Audio，请更换一个浏览器。
+        </audio>
+        <br>
+        <audio controls="controls">
+            <!-- <source src="music.mp3" type="audio/mpeg"> -->
+            <source src="music.ogg" type="audio/ogg">
+        </audio>
+    </body>
+</html>
