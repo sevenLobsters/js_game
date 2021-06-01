@@ -35,8 +35,8 @@ Game_Singleton.prototype.start = function (canvasName, x, y) {
     console.log("'");
 };
 
-// Game_Singleton.prototype.initialize = function () {
-// };
+Game_Singleton.prototype.initialize = function () {
+};
 
 // Game_Singleton.prototype.loadAssets = function () {
 // };
