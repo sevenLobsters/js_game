@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <title>你画我猜</title>
+    <link href="images/CSS.css" rel="stylesheet" type="text/css">
+</head>
+<style type="text/css">
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 12px;
+        line-height: 150%;
+        margin: 0px;
+        padding: 0px;
+        text-align: center;
+    }
+
+    td {
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    th {
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .main{
+        background-image: url(bj.jpg);
+        background-repeat: no-repeat;
+        height: 584px;
+        width: 730px;
+        margin: 20px auto;
+        display: none;
+    }
+    .tx{
+        background-image: url(tx.png);
+	background-repeat: no-repeat;
+	height: 48px;
+	width: 48px;
+	margin-top: 8px;
+	margin-left: 15px;
+	float: left;
+    }
+    .wz {
+	margin-left: 90px;
+	width: 200px;
+	text-align: center;
+	margin-top: 12px;
+	float: left;
+}
+.wzt {
+	color: #FF0000;
+}
+.time{
+    float: left;
+    margin-left: 100px;
+    margin-top: 10px;
+    text-align: center;
+    color: white;
+    width: 40px;
+    height: 40px;
+    font-size: 30px;
+    font-weight: bold;
+    border-radius: 40px;
+    border: 3px solid white;
+    background-color: red;
+    line-height: 40px;
+    display: none;
+}
+.tc {
+	float: right;
+	margin-right: 20px;
+	margin-top: 17px;
+}
+.qc {
+	clear: both;
+}
+.hbbox {
+	float: left;
+	width: 526px;
+	margin-top: 30px;
+	margin-right: 5px;
+	margin-left: 5px;
+}
+.hb {
+	background-color: #FFFFFF;
+	height: 371px;
+	width: 526px;
+	border: 1px solid #CCCCCC;
+}
+.hbr {
+	float: left;
+	width: 168px;
+	margin-top: 0px;
+}
+
+.uready {
+    position:relative;
+	background-image: url(txd.png);
+	background-repeat: no-repeat;
+	height: 60px;
+	width: 60px;
+}
+.ulx{
+	float: left;
+	height: 130px;
+	width: 60px;
+	margin-top: 5px;
+	margin-left: 10px;
+	background-position: center;
+	text-align: center;
+	margin-right: 10px;
+}
+.uoper {
+    position:relative;
+    border:3px solid red;
+	background-image: url(txd.png);
+	background-repeat: no-repeat;
+	height: 60px;
+	width: 60px;
+	border-radius:8px;
+}
+.ugo {
+	text-align: center;
+	font-weight:700;
+	color:red;
+	cursor:pointer;
+}
+.unready {
+	background-image: url(txd0.png);
+	background-repeat: no-repeat;
+	float: left;
+	height: 82px;
+	width: 60px;
+	margin-top: 5px;
+	margin-left: 10px;
+	background-position: bottom;
+	text-align: center;
+	margin-right: 10px;
+}
+.ys {
+	margin-top: 30px;
+	height: 48px;
+	width: 168px;
+}
+
+.bys {
+	float: left;	
+	height: 23px;
+	width: 23px;
+	margin-top: 0px;
+	margin-left: 0px;
+}
+.bc {
+	margin-top: 30px;
+	height: 24px;
+	width: 168px;
+}
+.bwid {
+	float: left;
+	height: 24px;
+	width: 24px;
+	margin-top: 0px;
+	margin-left: 0px;
+	margin-right: 15px;
+}
+
+.tb {
+	margin-top: 30px;
+	height: 24px;
+	width: 168px;
+}
+.tb1 {
+	float: left;
+	height: 24px;
+	width: 24px;
+	margin-top: 0px;
+	margin-left: 0px;
+	margin-right: 15px;
+}
+.tb2 {
+	float: left;
+	height: 24px;
+	width: 24px;
+	margin-top: 0px;
+	margin-left: 0px;
+	margin-right: 15px;
+}
+.tb3 {
+	float: left;
+	height: 24px;
+	width: 24px;
+	margin-top: 0px;
+	margin-left: 0px;
+	margin-right: 0px;
+}
+.msgArea {
+    text-align:left;
+	font-size:12px;
+	margin-top: 30px;
+	background-color: #FFFFFF;
+	border: 1px solid #CCCCCC;
+	height: 185px;
+	overflow-y:auto;
+	padding:6px;
+}
+.bd {
+	margin-top: 5px;
+}
+#paintArea{
+  cursor:url(br.cur);
+}
+.ready{
+  margin-top:0px;
+}
+#effect{
+  width:525;
+  height:370px;
+  line-height:370px;
+  color:red;
+  font-size:60px;
+  font-style:bold;
+  text-align:center;
+}
+#msg{
+  position:absolute;
+  background:rgba(125,125,125,0.8);  
+  overflow:hidden;
+  border:4px solid red;
+  width:300px;
+  height:130px;
+  line-height:130px;
+  font-size:30px;
+  border-radius:10px;
+  display:none;
+  color:white;
+  text-align:center;
+}
+.award{
+  position:absolute;
+  top:0px;
+  left:22px;
+  color:red;
+  font-size:30px;  
+}
+.awardAnim{  
+  position:absolute;
+  font-size:30px;  
+  top:-30px;
+  color:rgba(255,255,255,0);
+  -webkit-transition:top 1s linear,color 1s linear
+}
+.dlbj{
+	background-image: url(dlbj.jpg);
+	height: 165px;
+	width: 282px;
+	padding-top: 110px;
+	padding-left: 50px;
+	margin:30px auto;
+}
+.dlfwq{
+	margin-top: 10px;
+	margin-left: 48px;
+}
+#question{
+  font-size:14px;
+}
+
+
+</style>
+
+<body>
+    <div id="main" class="main">
+        <div>
+            <div class="tx"></div>
+            <!-- 显示问题区域 -->
+            <div class="wz">
+                <div id="dround"></div>
+                <span id="question"></span>
+            </div>
+            <!-- 显示时间 -->
+            <div id="qTime" class="time">60</div>
+            <div class="tc">离开房间<img src="../assets/images/edit_undo.png" align="absmiddle"></div>
+
+        </div>
+        <div class="qc"></div>
+        <div>
+            <!-- 绘制主图层 -->
+            <div class="hbbox">
+                <div id="hb" class="hb">
+                    <canvas id="paintArea" width="525" height="370"></canvas>
+                </div>
+            </div>
+            <!-- 工具选型区 -->
+            <div class="hbr">
+                <div id="operDiv">
+                    <!-- 颜色 -->
+                    <div id="ys" class="ys"></div>
+                    <!-- 画笔 -->
+                    <div id="bc" class="bc"></div>
+                    <!-- 橡皮擦 -->
+                    <div id="ssx" class="tab">
+                        <div id="btnRub" class="tb2"><img src="../assets/images/01945.png"></div>
+                        <div id="btnClear" class="tb3"><img src="../assets/images/053753321.gif"></div>
+                    </div>
+                </div>
+                <div id="msgArea" class="msgArea"></div>
+                <div class="bd">
+                    <input type="button" id="btnSendMsg" value="发送">
+                    <input type="text" size="13" id="txtMsg">
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+<script src="../js/jquery.js" charset="utf-8"></script>
+<script>
+
+    function isSupportHTML5(){
+        return(typeof(Worker)!=="undefined");
+    }
+
+    (function(){
+        var Painter = {
+            ctx:null,
+            w:0,
+            h:0,
+            bColor:null,
+            bWidth:null,
+            init:function(){
+                var can = $("#paintArea")[0];
+                this.ctx = can.getContext("2d");
+                this.w = can.width;
+                this.h = can.height;
+                this.setBGColor();
+                this.setBrushColor();
+                this.setBrushWidth();
+                this.ctx.lineCap = "round";
+                this.ctx.lineJoin = "round";
+                this.initCanvas();
+                this.initBrush();
+                this.initEraser();
+            },
+
+            initBrush:function(){
+                var bColor = ["#000000","#999999","#FFFFFF","#FF0000","#FF9900","#FFFF00","#008000","#00CCFF","#0099FF","#FF33CC","#CC66FF","#FFCCCC","#6633FF","#CCFFCC"];
+                var bDiv = $("#ys"),
+                self = this;
+                for(var i=0;i<bColor.length;i++){
+                    var b=$("<div class='bys'></div>")
+                    .css("background-color",bColor[i]);
+                    b.on("click",function(){
+                        self.fire("onPaintUpdate",{"color":$(this).css("background-color")});
+                    
+                    });
+                    bDiv.append(b);
+                }
+                //画笔大小
+                var bWidth = [2,8,16,,24];
+                for(var i = 0;i<bWidth.length;i++){
+                    var bw = $("<div class='bwid' data-bidx='"+(i)+"'></div>")
+                    bw.scc("background-image","url(images/bc"+(i+1)+".png)");
+                    bw.on("click",function(){
+                        self.fire("onPaintUpdate",{"width":bWidth[this.getAttribute("data-bidx")]});
+                    });
+                    bDiv.append(bw);
+                }
+            },
+
+            initEraser:function(){
+                var self = this;
+                $("#btnClear").click(function(){
+                    self.clear();
+                });
+                $("#btnRub").click(function(){
+                    self.setBrushColor("white");
+                    self.setBrushWidth(32);
+                });
+            },
+
+            setBGColor:function(color){
+                this.ctx.fillStyle = color||"white";
+                this.ctx.fillRect(0,0,this.w,this.h);
+            },
+            setBrushColor:function(color){
+                this.bColor = color||"black";
+                this.ctx.strokeStyle = this.bColor;
+            },
+
+            setBrushWidth:function(width){
+                this.bWidth = width||1;
+                this.ctx.lineWidth = this.bWidth;
+            },
+
+            initCanvas:function(){
+                var can = $("#paintArea"),
+                self = this;
+                can.on("mousedown",function(e){
+                    e.preventDefault();
+                    this.x = e.offsetX;
+                    this.y = e.offsetY;
+                    self.fire("onStartDraw",{"x":this.x,"y":this.y});
+                    can.on("mousemove",function(e){
+                        var nx = event.offsetX;
+                        var ny = event.offsetY;
+                        self.fire("onDrawing",{"x":nx,"y":ny});
+                        this.x = nx;
+                        this.y = ny;
+                    })
+                    can.on("mouseup",function(e){
+                        can.off("mousemove");
+                    })
+                });
+            },
+            clear:function(){
+                this.ctx.clearRect(0,0,this.w,this.h);
+            },
+
+            fire:function(eventName,param){
+                if(this[eventName]){
+                    this[eventName][param];
+                }
+            },
+            onStartDraw:function(data){
+                this.ctx.beginPath();
+                this.ctx.moveTo(data.x,data.y);
+            },
+            onDrawing:function(data){
+                this.ctx.lineTo(data.x,data.y);
+                this.ctx.stroke();
+            },
+
+            onPaintUpadate:function(data){
+                var w = data.width||this.bWidth,
+                c = data.color||this.bColor;
+                var param = {"width":w,"color":c};
+                this.setBrushWidth(w);
+                this.setBrushColor(c);
+            }
+        }
+        Painter.init();
+        window.Painter = Painter;
+
+    }())
+
+    $(document).ready(function(){
+        if(!isSupportHTML5()){
+            alert("您得浏览器不支持html5");
+        } else{
+            $("#main").show();
+        }
+    });
+</script>
+</html>
